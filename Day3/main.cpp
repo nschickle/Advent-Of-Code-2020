@@ -8,6 +8,7 @@ using namespace std;
 
 vector<vector<char>> traverse(vector<vector<char>> v1, int f, int g);
 void outputNewPath(vector<vector<char>> v1);
+vector<int> finalResult;
 
 int main()
 {
@@ -33,17 +34,28 @@ int main()
             } 
             v1.push_back(v2);
         }
-        //vCopy = traverse(v1,1,1);
+        vCopy = traverse(v1,1,1);
         //outputNewPath(vCopy);
         vCopy = traverse(v1,3,1);
-        outputNewPath(vCopy);
-        //vCopy = traverse(v1,5,1);
+        cout << "Part 1: " << endl << finalResult.back() << endl;
         //outputNewPath(vCopy);
-        //vCopy = traverse(v1,7,1);
+        vCopy = traverse(v1,5,1);
         //outputNewPath(vCopy);
-        //vCopy = traverse(v1,3,2);
+        vCopy = traverse(v1,7,1);
         //outputNewPath(vCopy);
+        vCopy = traverse(v1,1,2);
+        //outputNewPath(vCopy);
+        cout << "Part 2: " << endl;
+        int result = finalResult.back();
+        finalResult.pop_back();
+
+        for (int i = 0; i < finalResult.size()+2; i++)
+        {
+            result = result * finalResult.back();
+            finalResult.pop_back();
+        }
         
+        cout << result << endl;
     }
     else
     {
@@ -58,7 +70,7 @@ vector<vector<char>> traverse(vector<vector<char>> v1,int f, int g)
     int counter = 0;
     int xpos = 0;
     int ypos = 0;
-    for (int i = 0, j = 0; j < v1.size();i = i + f, j + g)
+    for (int i = 0, j = 0; j < v1.size();i = i + f, j = j + g)
     {
         
         //cout << ypos << endl;
@@ -80,8 +92,8 @@ vector<vector<char>> traverse(vector<vector<char>> v1,int f, int g)
         ypos = ypos + f;
 
         }
-        
-        cout << counter << endl;
+        finalResult.push_back(counter);
+        //cout << counter << endl;
         return v1;
 }
 
