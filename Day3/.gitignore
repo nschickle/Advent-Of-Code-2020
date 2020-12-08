@@ -1,0 +1,3 @@
+main.pdb vc140.pdb $ git rm --cached main.pdb vc140.pdb rm *.pdb $ git commit -m Start ignoring *.pdb
+main.ilk $ git rm --cached main.pdb vc140.pdb rm *.ilk $ git commit -m Start ignoring *.ilk
+main.obj $ git rm --cached main.pdb vc140.pdb rm *.obj $ git commit -m Start ignoring *.obj
